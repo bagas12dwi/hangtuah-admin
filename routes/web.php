@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TestiController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 
 //Route auth
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
@@ -26,4 +28,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 //Route admin
 Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::get('/testimoni', [TestimonialController::class, 'index']);
+    Route::resource('testimoni', TestiController::class);
 });

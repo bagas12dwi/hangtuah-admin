@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('school_now');
             $table->text('testimoni');
             $table->string('type');
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->constrained();
         });
     }
 

@@ -2,15 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
         SD Hang Tuah 7 Surabaya Admin | {{ $title }}
     </title>
     <!--     Fonts and icons     -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <!-- Nucleo Icons -->
     <link href="{{ URL::asset('/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -31,8 +34,12 @@
             @yield('konten')
             @include('components.footer-admin')
         </div>
+
     </main>
     <!--   Core JS Files   -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- DataTables -->
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script src="{{ URL::asset('/js/core/popper.min.js') }}"></script>
     <script src="{{ URL::asset('/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('/js/plugins/perfect-scrollbar.min.js') }}"></script>

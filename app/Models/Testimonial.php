@@ -11,6 +11,6 @@ class Testimonial extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class, 'user_id');
     }
 }
