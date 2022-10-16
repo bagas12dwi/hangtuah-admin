@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TestiController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::get('/testimoni', [TestimonialController::class, 'index']);
     Route::resource('testimoni', TestiController::class);
+
+    Route::get('/prestasi', [PrestasiController::class, 'index']);
+    Route::resource('prestasi', PrestasiController::class);
 });

@@ -52,7 +52,7 @@ class TestiController extends Controller
         $testimonial->user_id = auth()->user()->id;
         $testimonial->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan !');
     }
 
     /**
