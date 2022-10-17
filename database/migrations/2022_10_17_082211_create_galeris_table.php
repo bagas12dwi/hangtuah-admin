@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prestasis', function (Blueprint $table) {
+        Schema::create('galeris', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('prestasi_name');
-            $table->text('prestasi_desc');
+            $table->string('title');
+            $table->text('description');
+            $table->string('imgPath');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prestasis');
+        Schema::dropIfExists('galeris');
     }
 };

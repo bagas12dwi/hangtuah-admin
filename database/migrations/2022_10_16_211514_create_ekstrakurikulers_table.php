@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('ekstrakurikuler_name');
-            $table->string('description');
+            $table->text('description');
             $table->string('imgPath');
         });
     }
