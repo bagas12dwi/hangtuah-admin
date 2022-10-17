@@ -1,24 +1,23 @@
-<div class="modal fade" id="tambahEkstrakurikuler" tabindex="-1" aria-labelledby="tambahEkstrakurikulerLabel"
-    aria-hidden="true">
+<div class="modal fade" id="tambahPegawai" tabindex="-1" aria-labelledby="tambahPegawaiLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tambahEkstrakurikulerLabel">Tambahkan {{ $title }}</h1>
+                <h1 class="modal-title fs-5" id="tambahPegawaiLabel">Tambahkan {{ $title }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/ekstrakurikuler" method="POST" enctype="multipart/form-data">
+                <form action="/pegawai" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama {{ $title }}</label>
+                        <label for="nama" class="form-label">Nama Lengkap</label>
                         <input type="text" class="form-control" name="nama" id="nama">
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
+                        <label for="jabatan" class="form-label">Jabatan</label>
+                        <input type="text" class="form-control" name="jabatan" id="jabatan">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="inputGroupFile01">Upload Foto</label>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupFile01">Upload</label>
                         <input type="file" class="form-control" name="gambar">
                     </div>
             </div>

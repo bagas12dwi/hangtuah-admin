@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TestiController;
 use App\Http\Controllers\TestimonialController;
@@ -38,4 +39,5 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('prestasi', PrestasiController::class);
 
     Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
+    Route::resource('pegawai', PegawaiController::class);
 });
