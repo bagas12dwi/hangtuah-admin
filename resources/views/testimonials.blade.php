@@ -3,11 +3,11 @@
 @section('konten')
     <div class="row justify-content-between">
         <div class="col">
-            <h4 class="mb-4">Manage Testimoni</h4>
+            <h4 class="mb-4">Manage {{ $title }}</h4>
         </div>
         <div class="col">
             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#tambahTesti">
-                Tambahkan Testimoni
+                Tambahkan {{ $title }}
             </button>
         </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="col-12">
         <div class="card mb-4">
             <div class="card-header pb-0">
-                <h6>Data Testimoni</h6>
+                <h6>Data {{ $title }}</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">

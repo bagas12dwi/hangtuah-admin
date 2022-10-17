@@ -6,7 +6,8 @@
             <h4 class="mb-4">Manage {{ $title }}</h4>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#tambahPrestasi">
+            <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
+                data-bs-target="#tambahEkstrakurikuler">
                 Tambahkan {{ $title }}
             </button>
         </div>
@@ -28,7 +29,8 @@
                         <thead>
                             <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
-                                    Prestasi</th>
+                                    Ekstrakurikuler</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                     Deskripsi
                                 </th>
@@ -41,20 +43,25 @@
                                     <td>
                                         <div class="my-auto">
                                             <h6 class="mb-0 text-sm">
-                                                {{ $data->prestasi_name }}
+                                                {{ $data->ekstrakurikuler_name }}
                                             </h6>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-sm font-weight-bold mb-0">{{ $data->prestasi_desc }}</p>
+                                        <img src="{{ asset('storage/ekstrakurikuler/' . $data->imgPath) }}" width="100px"
+                                            alt="" />
+                                    </td>
+                                    <td>
+                                        <p class="text-sm font-weight-bold mb-0">{{ $data->description }}</p>
                                     </td>
                                     <td class="align-middle">
-                                        <button data-bs-toggle="modal" data-bs-target="#editPrestasi{{ $data->id }}"
+                                        <button data-bs-toggle="modal"
+                                            data-bs-target="#editEkstrakurikuler{{ $data->id }}"
                                             class="edit btn font-weight-bold text-xs" data-original-title="Edit user"
                                             id="edit">
                                             Edit
                                         </button>
-                                        <form action="/prestasi/{{ $data->id }}" method="post" class="d-inline">
+                                        <form action="/ekstrakurikuler/{{ $data->id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-danger font-weight-bold text-xs" data-toggle="tooltip"
@@ -64,29 +71,40 @@
                                         </form>
                                     </td>
                                 </tr>
-                                <div class="modal fade" id="editPrestasi{{ $data->id }}" tabindex="-1" role="dialog"
-                                    aria-labelledby="updateLabel" aria-hidden="true">
+                                <div class="modal fade" id="editEkstrakurikuler{{ $data->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="updateabel">Update Prestasi</h1>
+                                                <h1 class="modal-title fs-5" id="updateabel">Update {{ $title }}
+                                                </h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/prestasi/{{ $data->id }}" method="POST"
+                                                <form action="/ekstrakurikuler/{{ $data->id }}" method="POST"
                                                     id="editPrestasiForm" enctype="multipart/form-data">
                                                     @method('put')
                                                     @csrf
-                                                    <div class="mb-3">
-                                                        <label for="nama" class="form-label">Nama Prestasi</label>
-                                                        <input type="text" class="form-control"
-                                                            name="nama"id="nama"
-                                                            value="{{ $data->prestasi_name }}">
+                                                    <div class="mb-3 text-center">
+                                                        <img src="{{ asset('storage/ekstrakurikuler/' . $data->imgPath) }}"
+                                                            width="300px" alt="" />
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="prestasiDesc" class="form-label">Testimoni</label>
-                                                        <textarea class="form-control" id="prestasiDesc" name="prestasiDesc" rows="3">{{ $data->prestasi_desc }}</textarea>
+                                                        <label for="nama" class="form-label">Nama
+                                                            Ekstrakurikuler</label>
+                                                        <input type="text" class="form-control" name="nama"
+                                                            id="nama" value="{{ $data->ekstrakurikuler_name }}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3">{{ $data->description }}</textarea>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <label class="input-group-text"
+                                                            for="inputGroupFile01">Upload</label>
+                                                        <input type="file" class="form-control" name="gambar"
+                                                            value="{{ $data->imgPath }}">
                                                     </div>
                                             </div>
                                             <div class="modal-footer">
@@ -107,4 +125,4 @@
     </div>
 @endsection
 
-@include('components.modal-prestasi')
+@include('components.modal-ekstrakurikuler')
