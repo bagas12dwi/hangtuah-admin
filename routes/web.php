@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\GaleriController;
@@ -42,4 +43,5 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('galeri', GaleriController::class);
+    Route::resource('berita', BeritaController::class);
 });

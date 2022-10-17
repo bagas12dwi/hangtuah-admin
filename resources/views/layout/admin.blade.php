@@ -20,8 +20,17 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="{{ URL::asset('/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/trix.css') }}">
+    <script type="text/javascript" src="{{ URL::asset('js/trix.js') }}"></script>
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ URL::asset('/css/soft-ui-dashboard.css') }}" rel="stylesheet" />
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
