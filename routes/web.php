@@ -9,6 +9,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TestiController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,4 +45,5 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('galeri', GaleriController::class);
     Route::resource('berita', BeritaController::class);
+    Route::resource('user', UserController::class);
 });

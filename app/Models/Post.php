@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Berita extends Model
+class Post extends Model
 {
     use HasFactory;
 
-    public function getRouteKeyName()
+    public function sluggable(): array
     {
-        return 'title';
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

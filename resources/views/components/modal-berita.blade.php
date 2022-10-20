@@ -13,6 +13,10 @@
                         <input type="text" class="form-control" name="nama" id="nama">
                     </div>
                     <div class="mb-3">
+                        <label for="slug" class="form-label">Slug {{ $title }}</label>
+                        <input type="text" class="form-control" name="slug" id="slug">
+                    </div>
+                    <div class="mb-3">
                         <label for="deskripsi" class="form-label">Detail Berita</label>
                         <input id="x" type="hidden" name="content">
                         <trix-editor input="x"></trix-editor>

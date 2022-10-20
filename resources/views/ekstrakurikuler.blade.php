@@ -31,7 +31,8 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
                                     Ekstrakurikuler</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                <th scope="col"
+                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                     Deskripsi
                                 </th>
                                 <th class="text-secondary opacity-7"></th>
@@ -51,7 +52,7 @@
                                         <img src="{{ asset('storage/ekstrakurikuler/' . $data->imgPath) }}" width="100px"
                                             alt="" />
                                     </td>
-                                    <td>
+                                    <td style="width: 30%;">
                                         <p class="text-sm font-weight-bold mb-0">{{ $data->description }}</p>
                                     </td>
                                     <td class="align-middle">
