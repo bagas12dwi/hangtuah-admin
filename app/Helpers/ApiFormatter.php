@@ -16,6 +16,6 @@ class ApiFormatter
         self::$response['message'] = $message;
         self::$response['data'] = $data;
 
-        return response()->json(self::$response, self::$response['status_code']);
+        return response()->json(self::$response, self::$response['status_code'])->header("Access-Control-Allow-Origin",  "*");
     }
 }

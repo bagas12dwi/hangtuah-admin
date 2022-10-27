@@ -21,12 +21,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/testimoni', [TestimonialController::class, 'index']);
-Route::get('/prestasi', [PrestasiController::class, 'index']);
-Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index']);
-Route::get('/galeri', [GaleriController::class, 'index']);
-Route::get('/pegawai', [PegawaiController::class, 'index']);
-Route::resource('berita', BeritaController::class);
+Route::group(['middleware' => ['cors']], function () {
+    Route::get('/testimoni', [TestimonialController::class, 'index']);
+    Route::get('/prestasi', [PrestasiController::class, 'index']);
+    Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index']);
+    Route::get('/galeri', [GaleriController::class, 'index']);
+    Route::get('/pegawai', [PegawaiController::class, 'index']);
+    Route::resource('berita', BeritaController::class);
+});
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
