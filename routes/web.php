@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\TestiController;
 use App\Http\Controllers\TestimonialController;
@@ -44,6 +45,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('galeri', GaleriController::class);
-    Route::resource('berita', BeritaController::class);
+    Route::resource('post', PostController::class);
     Route::resource('user', UserController::class);
 });

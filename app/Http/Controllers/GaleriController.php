@@ -86,17 +86,27 @@ class GaleriController extends Controller
      */
     public function update(Request $request, Galeri $galeri)
     {
-        $gambar = $request->file('gambar')->getClientOriginalName();
         $nama = $request->input('nama');
         $deskripsi = $request->input('deskripsi');
+        $img = '';
+        $oldImg = $request->input('oldImg');
 
-        $request->file('gambar')->storeAs('public/galeri', $gambar);
+
+        if ($request->file('gambar') != null) {
+            $gambar = $request->file('gambar')->getClientOriginalName();
+            $img = $gambar;
+            $request->file('gambar')->storeAs('public/galeri', $gambar);
+        } else {
+            $img = $oldImg;
+        }
+
+
 
         Galeri::where('id', $galeri->id)
             ->update([
                 'title' => $nama,
                 'description' => $deskripsi,
-                'imgPath' => $gambar
+                'imgPath' => $img
             ]);
 
         return redirect('/galeri')->with('success', 'Data Berhasil Diupdate !');

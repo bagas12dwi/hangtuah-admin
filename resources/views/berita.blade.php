@@ -58,7 +58,7 @@
                                             id="edit">
                                             Edit
                                         </button>
-                                        <form action="/berita/{{ $data->id }}" method="post" class="d-inline">
+                                        <form action="/post/{{ $data->id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-danger font-weight-bold text-xs" data-toggle="tooltip"
@@ -79,13 +79,15 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/berita/{{ $data->id }}" method="POST"
+                                                <form action="/post/{{ $data->id }}" method="POST"
                                                     id="editPrestasiForm" enctype="multipart/form-data">
                                                     @method('put')
                                                     @csrf
+                                                    <input type="hidden" name="oldImg" value="{{ $data->imgPath }}">
                                                     <div class="mb-3 text-center">
-                                                        <img src="{{ asset('storage/ekstrakurikuler/' . $data->imgPath) }}"
+                                                        <img src="{{ asset('storage/berita/' . $data->imgPath) }}"
                                                             width="300px" alt="" />
+                                                        <p class="fst-italic">{{ $data->imgPath }}</p>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="nama" class="form-label">Judul</label>
@@ -94,8 +96,8 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="deskripsi" class="form-label">Detail Berita</label>
-                                                        <input id="x" type="hidden" name="content">
-                                                        <trix-editor input="x">{!! $data->description !!}</trix-editor>
+                                                        <input id="content" type="hidden" name="content">
+                                                        <trix-editor input="content">{!! $data->description !!}</trix-editor>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label" for="inputGroupFile01">Upload Foto</label>

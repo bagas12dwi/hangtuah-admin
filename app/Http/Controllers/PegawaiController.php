@@ -86,17 +86,25 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, Pegawai $pegawai)
     {
-        $gambar = $request->file('gambar')->getClientOriginalName();
         $nama = $request->input('nama');
         $jabatan = $request->input('jabatan');
+        $oldImg = $request->input('oldImg');
+        $img = '';
 
-        $request->file('gambar')->storeAs('public/pegawai', $gambar);
+        if ($request->file('gambar') != null) {
+            $gambar = $request->file('gambar')->getClientOriginalName();
+            $img = $gambar;
+            $request->file('gambar')->storeAs('public/pegawai', $gambar);
+        } else {
+            $img = $oldImg;
+        }
+
 
         Pegawai::where('id', $pegawai->id)
             ->update([
                 'name' => $nama,
                 'position' => $jabatan,
-                'imgPath' => $gambar
+                'imgPath' => $img
             ]);
 
         return redirect('/pegawai')->with('success', 'Data Berhasil Diupdate !');

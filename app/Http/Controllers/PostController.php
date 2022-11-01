@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Http\Request as HttpRequest;
 
 class PostController extends Controller
 {
@@ -15,7 +16,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('berita', [
+            'title' => 'Berita',
+            'data' => Post::all()
+        ]);
     }
 
     /**
@@ -34,9 +38,21 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(HttpRequest $request)
     {
-        //
+        $gambar = $request->file('gambar')->getClientOriginalName();
+        $nama = $request->input('nama');
+        $deskripsi = $request->input('content');
+
+        $request->file('gambar')->storeAs('public/berita', $gambar);
+
+        $berita = new Post();
+        $berita->title = $nama;
+        $berita->description = $deskripsi;
+        $berita->imgPath = $gambar;
+        $berita->save();
+
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan !');
     }
 
     /**
@@ -68,9 +84,30 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(HttpRequest $request, Post $post)
     {
-        //
+        $nama = $request->input('nama');
+        $deskripsi = $request->input('content');
+        $oldImg = $request->input('oldImg');
+        $img = '';
+
+
+        if ($request->file('gambar') != null) {
+            $gambar = $request->file('gambar')->getClientOriginalName();
+            $img = $gambar;
+            $request->file('gambar')->storeAs('public/berita', $gambar);
+        } else {
+            $img = $oldImg;
+        }
+
+        Post::where('id', $post->id)
+            ->update([
+                'title' => $nama,
+                'description' => $deskripsi,
+                'imgPath' => $img
+            ]);
+
+        return redirect('/post')->with('success', 'Data Berhasil Diupdate !');
     }
 
     /**
@@ -81,6 +118,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Post::destroy($post->id);
+        return redirect('/post')->with('success', 'Data Berhasil Dihapus !');
     }
 }

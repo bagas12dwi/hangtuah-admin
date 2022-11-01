@@ -86,17 +86,25 @@ class EkstrakurikulerController extends Controller
      */
     public function update(Request $request, Ekstrakurikuler $ekstrakurikuler)
     {
-        $gambar = $request->file('gambar')->getClientOriginalName();
         $nama = $request->input('nama');
         $deskripsi = $request->input('deskripsi');
+        $oldImg = $request->input('oldImg');
+        $img = '';
 
-        $request->file('gambar')->storeAs('public/ekstrakurikuler', $gambar);
+
+        if ($request->file('gambar') != null) {
+            $gambar = $request->file('gambar')->getClientOriginalName();
+            $request->file('gambar')->storeAs('public/ekstrakurikuler', $gambar);
+            $img = $gambar;
+        } else {
+            $img = $oldImg;
+        }
 
         Ekstrakurikuler::where('id', $ekstrakurikuler->id)
             ->update([
                 'ekstrakurikuler_name' => $nama,
                 'description' => $deskripsi,
-                'imgPath' => $gambar
+                'imgPath' => $img
             ]);
 
         return redirect('/ekstrakurikuler')->with('success', 'Data Berhasil Diupdate !');

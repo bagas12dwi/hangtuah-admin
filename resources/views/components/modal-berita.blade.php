@@ -6,15 +6,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/berita" method="POST" enctype="multipart/form-data">
+                <form action="/post" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="nama" class="form-label">Judul {{ $title }}</label>
                         <input type="text" class="form-control" name="nama" id="nama">
-                    </div>
-                    <div class="mb-3">
-                        <label for="slug" class="form-label">Slug {{ $title }}</label>
-                        <input type="text" class="form-control" name="slug" id="slug">
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">Detail Berita</label>

@@ -83,9 +83,11 @@
                                                     id="editPrestasiForm" enctype="multipart/form-data">
                                                     @method('put')
                                                     @csrf
+                                                    <input type="hidden" name="oldImg" value="{{ $data->imgPath }}">
                                                     <div class="mb-3 text-center">
                                                         <img src="{{ asset('storage/ekstrakurikuler/' . $data->imgPath) }}"
                                                             width="300px" alt="" />
+                                                        <p class="fst-italic">{{ $data->imgPath }}</p>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="nama" class="form-label">Judul
